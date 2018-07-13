@@ -10,7 +10,6 @@ package Generic;
 		return ob;
 	}
 }*/
-
 class BoxFactory {
 	public static <T extends Number> Box<T> makeBox(T o) {
 		Box<T> box = new Box<T>();

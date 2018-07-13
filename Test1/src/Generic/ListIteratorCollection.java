@@ -15,7 +15,7 @@ public class ListIteratorCollection {
 		
 		ListIterator<String> litr = list.listIterator();	// 양방향 반복자 획득
 		
-		String str;
+		String str; 
 		while(litr.hasNext()) {			// 왼쪽에서 오른쪽으로 이동을 위한 반복문
 			
 			str = litr.next();

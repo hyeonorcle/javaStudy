@@ -13,7 +13,7 @@ public class IteratorCollection {
 		list.add("Robot");
 		list.add("Box");
 		
-		// = List<String> list = Array.asList("Toy", "Box", "Robot", "Box");
+		// = List<String> list = Array.asList("Toy", "Box",  "Robot", "Box");
 		
 		for(String s : list)
 			System.out.print(s + '\t');	

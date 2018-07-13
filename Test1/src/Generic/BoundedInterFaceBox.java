@@ -8,7 +8,7 @@ class Apple1 implements Eatable {
 	public String toString() {
 		return "Iam an apple.";
 	}
-	
+	 
 	@Override
 	public String eat() {
 		return "It tastes so good!";
