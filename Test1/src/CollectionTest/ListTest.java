@@ -8,7 +8,7 @@ class Num {
 	public Num(int i) {
 		num = i;
 	}
-	
+	    
 	
 	@Override
 	public String toString() {
