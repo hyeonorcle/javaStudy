@@ -68,7 +68,8 @@ public class EmployeeMgmt {
 		dto.setEmail(email);
 		dto.setJobId(job);
 		
-		dao.insertEmp(dto);
+//		dao.insertEmp(dto);
+		dao.insertEmpPorc(dto);
 	}
 	
 	public void updateEmpProc() {
@@ -81,16 +82,15 @@ public class EmployeeMgmt {
 		String lastName = sc.nextLine();
 		System.out.println("수정할 이메일을 입력하세요.");
 		String email = sc.nextLine();
-		System.out.println("수정할 직무를 입력하세요.");
-		String job = sc.nextLine();
 		
 		dto.setEmployeeId(empNo);
 		dto.setFirstName(firstName);
 		dto.setLastName(lastName);
 		dto.setEmail(email);
-		dto.setJobId(job);
 		
-		dao.updateEmp(dto);
+		
+//		dao.updateEmp(dto);
+		dao.updateEmpProc(dto);
 	}
 	public void empListMap() {
 		
@@ -98,5 +98,11 @@ public class EmployeeMgmt {
 		list1 = dao.getEmpListMap();
 		for(Map<String, Object> map : list1)
 			System.out.println(map);
+	}
+	
+	public void empListCursor() {
+		List<EmployeeDTO> list = dao.getEmpListCursor();
+		for(EmployeeDTO d: list)
+			System.out.println(d);
 	}
 }

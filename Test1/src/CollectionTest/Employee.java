@@ -14,7 +14,7 @@ public class Employee {
 
 		int menu;
 		while(true) {
-			System.out.println("menu 선택하세요. 1:전체조회(조건), 2:단건조회 , 3:입력 ,4:수정, 5:전체조회(map), 6:종료");
+			System.out.println("menu 선택하세요. 1:전체조회(조건), 2:단건조회 , 3:입력 ,4:수정, 5:전체조회(map), 6:종료, 7:리스트(커서)");
 			menu = sc.nextInt();
 			
 			switch(menu) {
@@ -40,6 +40,9 @@ public class Employee {
 			case 6:
 				System.out.println("프로그램을 종료합니다.");
 				System.exit(0);
+			case 7:
+				mgmt.empListCursor();
+				break;
 
 			}//end of switch
 

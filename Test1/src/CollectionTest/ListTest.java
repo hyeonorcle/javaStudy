@@ -3,7 +3,7 @@ package CollectionTest;
 import java.util.ArrayList;
 import java.util.List;
 
-class Num {
+class Num {  
 	int num;
 	public Num(int i) {
 		num = i;
