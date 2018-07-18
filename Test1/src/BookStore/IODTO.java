@@ -2,36 +2,61 @@ package BookStore;
 
 public class IODTO {
 	
-	private Integer iocode;
-	private Integer pcode;
-	private Integer io_amount;
-	private Integer storecode;
+	String iocode;
+	String pcode;
+	String io_amount;
+	String storecode;
 	
-	public Integer getIocode() {
+	
+	
+	public String getIocode() {
 		return iocode;
 	}
-	public void setIocode(Integer iocode) {
+
+
+
+	public void setIocode(String iocode) {
 		this.iocode = iocode;
 	}
-	public Integer getPcode() {
+
+
+
+	public String getPcode() {
 		return pcode;
 	}
-	public void setPcode(Integer pcode) {
+
+
+
+	public void setPcode(String pcode) {
 		this.pcode = pcode;
 	}
-	public Integer getIo_amount() {
+
+
+
+	public String getIo_amount() {
 		return io_amount;
 	}
-	public void setIo_amount(Integer io_amount) {
+
+
+
+	public void setIo_amount(String io_amount) {
 		this.io_amount = io_amount;
 	}
-	public Integer getStorecode() {
+
+
+
+	public String getStorecode() {
 		return storecode;
 	}
-	public void setStorecode(Integer storecode) {
+
+
+
+	public void setStorecode(String storecode) {
 		this.storecode = storecode;
 	}
-	
+
+
+
 	@Override
 	public String toString() {
 		return "IODTO [iocode=" + iocode + ", pcode=" + pcode + ", io_amount=" + io_amount + ", storecode=" + storecode
