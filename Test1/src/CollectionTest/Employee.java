@@ -1,16 +1,20 @@
 package CollectionTest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import jxl.write.WriteException;
+
 public class Employee {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws WriteException, IOException {
 		
 		EmployeeMgmt mgmt = new EmployeeMgmt();
 		Scanner sc = new Scanner(System.in);
+		EmployeeDAO dao = new EmployeeDAO();
 
 		int menu;
 		while(true) {
@@ -43,6 +47,10 @@ public class Employee {
 			case 7:
 				mgmt.empListCursor();
 				break;
+			case 8:
+				dao.excelExport();
+				break;
+				
 
 			}//end of switch
 

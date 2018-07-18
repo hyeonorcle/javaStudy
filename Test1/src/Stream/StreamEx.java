@@ -1,17 +1,25 @@
 package Stream;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import jxl.Workbook;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+
 
 public class StreamEx {
 
 	public static void main(String[] args) {
+
 		//		int ar[] = {1,2,3,4,5,6,7,8,9};
 		//		int sum = Arrays.stream(ar)
 		//						.filter(n -> n%2==1)
@@ -91,5 +99,7 @@ public class StreamEx {
 
 
 	}
+	
+
 
 }

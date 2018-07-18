@@ -1,21 +1,33 @@
 package CollectionTest;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Date;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import jxl.Workbook;
+import jxl.format.Alignment;
+import jxl.format.Colour;
+import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+
 public class EmployeeDAO {
 
 	Connection conn = null;
+
 
 	public Connection getConnection() {
 
@@ -284,6 +296,39 @@ public class EmployeeDAO {
 
 	}
 
+	public List<EmployeeDTO> getEmployeeList() {
+
+		getConnection();
+
+		EmployeeDTO employees =null;
+		List<EmployeeDTO> list = new ArrayList<>();
+
+		String sql = "select first_name, last_name, salary, department_id as department from employees where department_id is not null";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();			
+
+			while(rs.next()) {
+				employees = new EmployeeDTO();
+				employees.setFirstName(rs.getString("first_name"));
+				employees.setLastName(rs.getString("last_name"));
+				employees.setSalary(rs.getString("salary"));
+				employees.setDepartment(rs.getString("department"));
+				list.add(employees);
+			}
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
 	public List<EmployeeDTO> getEmpListCursor() {
 		getConnection();
 
@@ -323,6 +368,43 @@ public class EmployeeDAO {
 		}
 
 		return list;
+	}
+
+	public void excelExport() throws IOException, WriteException {
+		EmployeeDAO dao = new EmployeeDAO();
+
+		WritableWorkbook workbook = Workbook.createWorkbook(new File("new.xls"));
+		WritableSheet sheet = workbook.createSheet("emp", 0);
+		WritableCellFormat wcf = new WritableCellFormat();
+		wcf.setAlignment(Alignment.CENTRE);
+		wcf.setBackground(Colour.GOLD);
+		WritableFont arial10Bold = new WritableFont(WritableFont.ARIAL, 10, WritableFont.BOLD);
+		wcf.setFont(arial10Bold);
+		sheet.setColumnView(0, 20);
+		sheet.setColumnView(1, 20);
+		sheet.setColumnView(2, 20);
+
+		sheet.addCell(new Label(0, 0, "firstName", wcf));
+		sheet.addCell(new Label(1, 0, "lastName", wcf));
+		sheet.addCell(new Label(2, 0, "salary", wcf));
+
+		List<EmployeeDTO> list = dao.getEmployeeList();
+		int j = 0;
+		for (EmployeeDTO emp : list) {
+			Label lblFirstName = new Label(0, j, emp.getFirstName());
+			Label lblLastName = new Label(1, j, emp.getLastName());
+			Label lblSalary = new Label(2, j, emp.getSalary());
+
+			sheet.addCell(lblFirstName);
+			sheet.addCell(lblLastName);
+			sheet.addCell(lblSalary);
+			j++;
+		}
+		workbook.write();
+		workbook.close();
+		System.out.println("excel completed.");
+
+
 	}
 
 }

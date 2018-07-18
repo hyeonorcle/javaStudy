@@ -10,9 +10,23 @@ public class EmployeeDTO {
 	private String email;
 	private String jobId;
 	private String hireDate;
+	private String salary;
+	private String department;
 	
 	
 
+	public String getDepartment() {
+		return department;
+	}
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+	public String getSalary() {
+		return salary;
+	}
+	public void setSalary(String salary) {
+		this.salary = salary;
+	}
 	public String getHireDate() {
 		return hireDate;
 	}
