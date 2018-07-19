@@ -33,7 +33,8 @@ public class ProductDTO {
 	}
 	@Override
 	public String toString() {
-		return "ProductDTO [pcode=" + pcode + ", pname=" + pname + ", pcontent=" + pcontent + ", bstock=" + bstock + "]";
+//		return "ProductDTO [pcode=" + pcode + ", pname=" + pname + ", pcontent=" + pcontent + ", bstock=" + bstock + "]";
+		return String.format("%5s\t %8s\t %8s\t %10s\t",pcode, pname, pcontent,bstock );
 	}
 	
 	

@@ -15,17 +15,17 @@ public class IOMgmt {
 	
 		List<IODTO> list = dao.getIOList();
 		
-		System.out.println("                     		       < 전 체 리 스 트 >                                                ");
-		System.out.println("◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇");
-		System.out.println(" Iocode	Pcode	Io_amount	Storecode");
-		System.out.println("◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇");
+		System.out.println("                  < 입 출 고  리 스 트 >                     ");
+		System.out.println("====================================================");
+		System.out.println("  입출고 번호          상품 번호	       입출고 재고량     		창고");
+		System.out.println("====================================================");
 		for(IODTO dto : list)
 		{	
 			System.out.println(dto);
-			System.out.println("---------------------------------------------------------------------------------------------");
+			
 		}
 		
-		System.out.println("◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇◆◇");
+		System.out.println("====================================================");
 		System.out.println();
 	}
 

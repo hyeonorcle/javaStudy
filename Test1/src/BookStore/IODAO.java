@@ -2,15 +2,12 @@ package BookStore;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
-import CollectionTest.EmployeeDTO;
 
 public class IODAO {
 	Connection conn = null;
@@ -76,7 +73,7 @@ public class IODAO {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();			//반환 타입이 Resultset
 
-			if(rs.next()) {
+			while(rs.next()) {
 				dto = new IODTO();
 				dto.setIocode(rs.getString("iocode"));
 				dto.setPcode(rs.getString("pcode"));

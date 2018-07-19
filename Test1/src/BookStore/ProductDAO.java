@@ -3,18 +3,23 @@ package BookStore;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
-import CollectionTest.EmployeeDTO;
 
 public class ProductDAO {
 	Connection conn = null;
+
 
 	public Connection getConnection() {
 
 
 		try {
 			String user = "java"; 
+			
 			String pw = "java";
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 
@@ -34,13 +39,16 @@ public class ProductDAO {
 		return conn;
 	}
 
-	public void insertProPorc(Product dto) {
+	public void insertProProc(ProductDTO dto) {
 		getConnection();
 
 		try {
-			CallableStatement cstmt = conn.prepareCall("{call ");
-			
-			
+			CallableStatement cstmt = conn.prepareCall("{call insert_prod_proc (?,?,?,?)");
+
+			cstmt.setString(1, dto.getPcode());
+			cstmt.setString(2, dto.getPname());
+			cstmt.setString(3, dto.getPcontent());
+			cstmt.setString(4, dto.getBstock());
 
 			int r = cstmt.executeUpdate();
 
@@ -56,10 +64,46 @@ public class ProductDAO {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	public List<ProductDTO> getProdList() {
+		getConnection();
+
+		ProductDTO dto = null;
+		List<ProductDTO> list = new ArrayList<>();
+
+		String sql = "select pcode,pname,pcontent,bstock from product";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();			//반환 타입이 Resultset
+
+			while(rs.next()) {
+				dto = new ProductDTO();
+				dto.setPcode(rs.getString("pcode"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcontent(rs.getString("pcontent"));
+				dto.setBstock(rs.getString("bstock"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return list;
 
 	}
 	
+	
+
 }
+
+
 
 
 

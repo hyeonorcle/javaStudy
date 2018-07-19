@@ -59,8 +59,9 @@ public class IODTO {
 
 	@Override
 	public String toString() {
-		return "IODTO [iocode=" + iocode + ", pcode=" + pcode + ", io_amount=" + io_amount + ", storecode=" + storecode
-				+ "]";
+//		return "IODTO [iocode=" + iocode + ", pcode=" + pcode + ", io_amount=" + io_amount + ", storecode=" + storecode
+//				+ "]";
+		return String.format("%5s\t %8s\t %8s\t %10s\t",iocode, pcode,io_amount,storecode );
 	}
 	
 	
