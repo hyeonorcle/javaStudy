@@ -56,13 +56,12 @@ public class ProductDAO {
 
 		} catch (SQLException e) {
 
-			e.printStackTrace();
+			e.printStackTrace(); 
 		}finally {
 			try {
 				conn.close();
 			}catch(SQLException e) {
-				e.printStackTrace();
-			}
+				e.printStackTrace();			}
 		}
 	}
 
@@ -96,6 +95,38 @@ public class ProductDAO {
 		}
 
 		return list;
+
+	}
+	public ProductDTO getProdOneList(String pcode) {
+		getConnection();
+
+		ProductDTO dto = null;
+		
+		String sql = "select pcode,pname,pcontent,bstock from product where pcode=?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,pcode);
+			ResultSet rs = pstmt.executeQuery();			//반환 타입이 Resultset
+
+			if(rs.next()) {
+				dto = new ProductDTO();
+				dto.setPcode(rs.getString("pcode"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcontent(rs.getString("pcontent"));
+				dto.setBstock(rs.getString("bstock"));
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return dto;
 
 	}
 	

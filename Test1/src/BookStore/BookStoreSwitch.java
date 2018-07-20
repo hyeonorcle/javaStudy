@@ -22,6 +22,7 @@ class BookStoreSwitch {
 				mgmt.getProdList();
 				break;
 			case 2:
+				mgmt.getProdOneList();
 				break;
 			case 3:
 				mgmt.insertProProc();

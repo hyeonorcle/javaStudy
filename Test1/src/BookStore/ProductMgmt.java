@@ -48,6 +48,23 @@ public class ProductMgmt {
 		System.out.println("==================================================");
 		System.out.println();
 	}
+	public void getProdOneList() {
+		
+		System.out.print("조회할 상품 번호를 입력하세요 : ");
+		String pcode = sc.nextLine();
+		
+		ProductDTO dto = dao.getProdOneList(pcode);
+
+		System.out.println("                < 상 품  리 스 트 >                     ");
+		System.out.println("==================================================");
+		System.out.println("  상품 번호          상품 명	      	상품 설명     	기초 재고");
+		System.out.println("==================================================");
+		System.out.println(dto);
+
+		System.out.println("==================================================");
+		System.out.println();
+	}
+
 
 
 }
