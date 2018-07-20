@@ -27,6 +27,9 @@ class BookStoreSwitch {
 			case 3:
 				mgmt.insertProProc();
 				break;
+			case 4:
+				mgmt.UpdateProProc();
+				break;
 			case 6:
 				return ;
 								

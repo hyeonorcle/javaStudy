@@ -11,8 +11,8 @@ public class memo {
 
 	public static void main(String[] args) throws IOException {
 
-		try(BufferedInputStream in = new BufferedInputStream(new FileInputStream("memo.txt"));
-				BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream("memo2.txt"))) {
+		try(BufferedInputStream in = new BufferedInputStream(new FileInputStream("D:\\javaStudy\\memo.txt"));
+				BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream("D:memo2.txt"))) {
 			int data;
 			
 			while(true) {

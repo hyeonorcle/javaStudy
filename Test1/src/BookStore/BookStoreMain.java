@@ -10,7 +10,7 @@ public class BookStoreMain {
 		BookStoreSwitch bss = new BookStoreSwitch();
 		
 		while(true) {
-			System.out.println("menu 선택 : 1.상품  2.입출고  3.재고  4.창고" );
+			System.out.println("menu 선택 : 1.상품  2.입출고  3.재고  4.창고 0.종료" );
 			int menu = sc.nextInt();
 			
 			switch(menu) {
@@ -25,6 +25,9 @@ public class BookStoreMain {
 				break;
 			case 4 :
 				break;
+				
+			case 0:
+				System.exit(0);
 				
 			}
 			

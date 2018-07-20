@@ -9,6 +9,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import CollectionTest.EmployeeDTO;
+
 
 public class ProductDAO {
 	Connection conn = null;
@@ -19,7 +21,7 @@ public class ProductDAO {
 
 		try {
 			String user = "java"; 
-			
+
 			String pw = "java";
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
 
@@ -101,7 +103,7 @@ public class ProductDAO {
 		getConnection();
 
 		ProductDTO dto = null;
-		
+
 		String sql = "select pcode,pname,pcontent,bstock from product where pcode=?";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -114,7 +116,7 @@ public class ProductDAO {
 				dto.setPname(rs.getString("pname"));
 				dto.setPcontent(rs.getString("pcontent"));
 				dto.setBstock(rs.getString("bstock"));
-				
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -129,10 +131,51 @@ public class ProductDAO {
 		return dto;
 
 	}
+
+	public void UpdateProProc(ProductDTO dto) {
+
+		getConnection();
+		
+
+		try {
+			CallableStatement cstmt = conn.prepareCall("{call update_prod_proc(?,?,?,?)}");
+			
+			cstmt.setString(1, dto.getPcode());
+			cstmt.setString(2, dto.getPname());
+			cstmt.setString(3, dto.getPcontent());
+			cstmt.setString(4, dto.getBstock());
+			
+			int r = cstmt.executeUpdate();
+			if(r > 0)
+			System.out.println(r+ " 건 수정되었습니다.(Proc)");
+			else 
+			System.out.println("안됨");
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}finally {
+			try {
+				conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		
+		}
+
+	}
 	
-	
+	public void DelProdProc() {
+		
+		getConnection();
+		
+	}
 
 }
+
+
+
+
 
 
 
